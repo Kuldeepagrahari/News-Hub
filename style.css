@@ -24,7 +24,7 @@ body{
     flex-direction: c;
     align-items: center;
     justify-content: space-around;
-    height: 70px;
+    height: 15vh;
     background-color: gold;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
@@ -35,14 +35,15 @@ body{
     text-decoration: none;
     color:black;
     font-weight: bolder;
-    font-size: 40px;
+    font-size: min(7vw,40px);
     
     
 }
 .name{
     border: 2px solid black;
     border-radius: 5px;
-    height: 40px;
+    height: min(7vh,100px);
+    width:min(200px,40vw);
     display: flex;
     align-items: center;
     padding: 5px 10px;
@@ -61,21 +62,21 @@ body{
     gap: 5px;
 }
 .search input{
-    height:5px;
-    width:200px;
-    padding:12px 10px;
+    height:2vh;
+    width:15vw;
+    padding:2vh 2vw;
     border-radius: 5px;
     /* border: none; */
 }
 .search button{
-    height:32px;
-    width:100px;
-    padding:5px 10px;
+    height:7vh;
+    width:8vw;
+    padding:1vh 1.5vw;
     border:none;
     background-color:black ;
     color:gold;
     border-radius: 5px;
-    font-size: 17px;
+    font-size: 2vw;
     text-align: center;
     display: flex;
     align-items: center;
@@ -84,6 +85,7 @@ body{
 .search button a{
     text-decoration: none;
     color:white;
+    font-size: 1.2vw;
 }
 .search button:hover{
     background-color: gold;
@@ -110,11 +112,11 @@ main{
 .boxes{
     /* position: absolute; */
     border:2px gold solid;
-    width:18%;
-    height:50%;
+    width:215px;
+    /* height:40vh; */
     color:white;
     display:flex;
-    margin:15px;
+    margin:20px;
     padding:5px 10px;
     flex-direction: column;
     border-radius: 10px;
@@ -188,12 +190,20 @@ header{
     background: gold;
     color: #f1f1f1;
     width: 97%;
-    height: 15vh;
+    height: max(50px,15vh);
     border-radius: 20px;
     color:black;
 
 
 
+  }
+
+  .nav-left{
+    display: flex;
+    flex-direction: row;
+    gap:10vw;
+    justify-content: space-between;
+    align-items: center;
   }
   .content h1 ,.content p{
     margin-left:5%;
@@ -201,21 +211,124 @@ header{
     
   }
   .content h1{
-    font-size: 2.5vw;
+    font-size: min(3.5vw,30px);
   }
   
-  /* Style the button used to pause/play the video */
-  #myBtn {
-    width: 200px;
-    font-size: 18px;
-    padding: 10px;
-    border: none;
-    background: #000;
-    color: #fff;
-    cursor: pointer;
+ 
+  .options h4 a{
+    font-size: min(20px,5vw);
+    
   }
+
+  @media screen and (max-width: 600px) {
   
-  #myBtn:hover {
-    background: #ddd;
-    color: black;
-  }
+    .nav-left{
+        background-color: black;
+        width: 100%;
+        color:gold;
+        top:0;
+        margin-top: -6vh;
+        height: 20vh;
+        display: flex;
+        flex-direction: row;
+        gap:5vw;
+        justify-content: space-around;
+        align-items: center;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+    .name{
+        color:gold;
+
+    }
+    .search {
+        flex-direction: column;
+    }
+    
+    .search input {
+        width: 100%;
+    }
+    
+    .search button {
+        width: 100%;
+
+    }
+    .search button a{
+        font-size: 11px;
+    }
+    .nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* justify-content:; */
+        height: 50vh;
+        background-color: gold;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+    
+        
+    }
+    .nav .name a{
+        text-decoration: none;
+        color:gold;
+        font-weight: bolder;
+        font-size: 7vw;
+        
+        
+    }
+    .name{
+        border: 2px solid gold;
+        border-radius: 5px;
+        height: 9vh;
+        width:35vw;
+        display: flex;
+        align-items: center;
+        padding: 5px 10px;
+    }
+    .nav .options h4{
+        border-bottom: 2px solid gold;
+    }
+    .nav .options h4 a{
+        text-decoration: none;
+        color:gold;
+    }    
+
+    .content h1{
+        font-size: 12px;
+    }
+    .content{
+        border-radius: 5px;
+    }
+    main{
+        margin:0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .boxes {
+        width:180px;
+        
+
+    }
+    
+}
+
+@media screen and (min-width:600) {
+    .boxes{
+        width:200px;
+    }
+}
+@media screen and (max-width:470px) {
+    main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        
+        
+    }
+    .boxes{
+        width: 220px;
+        margin-left: 7px;
+    }
+}
