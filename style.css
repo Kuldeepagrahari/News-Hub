@@ -1,7 +1,7 @@
 /*
  * NEWS HUB STYLESHEET - BLUE/TEAL COSMIC THEME
  * Author: Gemini
- * Version: 8.0
+ * Version: 9.0 (Fixed Video Overflow & CSS Syntax)
  * Features: Modern "Neon Glow" Cards, Full Blue/Teal Theme, Pure CSS Universe Background, Shadow Gradients, Full Responsiveness.
 */
 
@@ -45,7 +45,6 @@
 
 
 /* --- Global and Body Styles --- */
-/* --- Global and Body Styles (UPDATED FOR STAR VISIBILITY) --- */
 body{
     display: flex;
     align-items: center;
@@ -58,37 +57,36 @@ body{
 
     /* ENHANCED VISIBILITY PURE CSS UNIVERSE BACKGROUND */
     background-image: 
-        /* Layer 1: Brightest, largest stars */
-        radial-gradient(circle at 10% 20%, #FFFFFF 2px, transparent 0), /* Larger, brighter */
+        radial-gradient(circle at 10% 20%, #FFFFFF 2px, transparent 0),
         radial-gradient(circle at 80% 90%, #FFFFFF 1.5px, transparent 0),
-        
-        /* Layer 2: Medium stars - higher density/brightness */
         radial-gradient(circle at 40% 70%, rgba(255, 255, 255, 1) 1px, transparent 0),
         radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.8) 0.8px, transparent 0),
-
-        /* Layer 3: Star dust - very high density */
         radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.5) 0.6px, transparent 0),
         radial-gradient(circle at 20% 60%, rgba(255, 255, 255, 0.4) 0.5px, transparent 0),
-        
-        /* Nebula Glow (using main theme color) */
-        radial-gradient(ellipse at 50% 50%, rgba(10, 96, 255, 0.15) 0%, transparent 70%); /* Slight increase in nebula visibility */
+        radial-gradient(ellipse at 50% 50%, rgba(10, 96, 255, 0.15) 0%, transparent 70%);
 
-
-    background-size: 
-        500px 500px, 400px 400px, /* Layer 1 - Slightly tighter spacing for more stars */
-        250px 250px, 200px 200px, /* Layer 2 */
-        120px 120px, 80px 80px, /* Layer 3 - Much tighter spacing for dense dust */
-        100% 100%; /* Nebula */
-
+    background-size: 500px 500px, 400px 400px, 250px 250px, 200px 200px, 120px 120px, 80px 80px, 100% 100%;
     background-color: var(--color-dark);
     animation: background-pan 300s linear infinite alternate, twinkle 5s infinite alternate; 
 }
 
+/* FIX: Responsive Video Styles to prevent overflow */
+#video {
+    width: 100%;
+    height: auto; 
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+#video video {
+    width: 100%;
+}
 #page{
     width:99%;
     background-color: var(--color-dark);
     border-radius: 10px;
-    /* Shadow Gradient Effect on Page Container */
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.5), 
                 0 0 20px -5px var(--shadow-blue-main-end) inset, 
                 0 0 20px -5px var(--shadow-teal-end) inset;
@@ -101,9 +99,10 @@ body{
 .nav {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Logo Left, Search Right */
+    justify-content: space-between; 
     height: 15vh;
-    background-color: var(--color-primary); 
+    /* background-color: var(--color-primary);  */
+    background-image: linear-gradient(45deg, rgb(5, 205, 245), blue, black);
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     flex-wrap: nowrap; 
@@ -197,9 +196,9 @@ body{
     transform: scale(1.05);
     animation: pulse 1.5s infinite;
     box-shadow: none;
-    a{
+}
+.search button a:hover{
     color: var(--color-dark); 
-    }
 }
 
 /* --- Main Content and Modern Card Styles --- */
