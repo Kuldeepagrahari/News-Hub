@@ -25,8 +25,7 @@ function delay(ms) {
 
 async function fetch_blogs() {
     try {
-        // apiUrl = site url + query + api-key
-        const apiUrl = `https://newsapi.org/v2/everything?q=india&pageSize=100&apiKey=${api_key}`;
+        const apiUrl = `http://localhost:106/api/news`;  // backend proxy
         const response = await fetch(apiUrl);
 
         if (!response.ok) {
@@ -34,13 +33,8 @@ async function fetch_blogs() {
         }
 
         const data = await response.json();
-        // console.log(data);
         
-        // Check if video element exists before trying to style it
-        if (video) {
-            video.style.display = "none";
-        }
-
+        if (video) video.style.display = "none";
         if (data.status !== 'ok') {
             throw new Error(`API error! message: ${data.message}`);
         }
@@ -66,10 +60,9 @@ searchBtn.addEventListener('click',async ()=>{
     }
 })
 
-async function fetchNewsQuery(query){
+async function fetchNewsQuery(query) {
     try {
-        // apiUrl = site url + query + api-key
-        const apiUrl = `https://newsapi.org/v2/everything?q=${query}&pageSize=10&apiKey=${api_key}`;
+        const apiUrl = `http://localhost:106/api/search?q=${encodeURIComponent(query)}`;
         const response = await fetch(apiUrl);
 
         if (!response.ok) {
@@ -77,7 +70,6 @@ async function fetchNewsQuery(query){
         }
 
         const data = await response.json();
-        // console.log(data);
 
         if (data.status !== 'ok') {
             throw new Error(`API error! message: ${data.message}`);
@@ -85,10 +77,11 @@ async function fetchNewsQuery(query){
 
         return data.articles;
     } catch (err) {
-        console.error('Error in fetch_blogs:', err);
+        console.error('Error in fetchNewsQuery:', err);
         return [];
     }
 }
+
 function displayBlogs(articles) {
     // Check if blog_cont exists before trying to manipulate its content
     if (!blog_cont) {
