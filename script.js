@@ -13,7 +13,7 @@ const searchBtn = document.getElementById("search-btn")
 async function fetch_blogs() {
     try {
         // apiUrl = site url + query + api-key
-        const apiUrl = `https://newsapi.org/v2/top-headlines?country=in&pageSize=10&apiKey=${api_key}`;
+        const apiUrl = `https://newsapi.org/v2/everything?q=india&pageSize=10&apiKey=${api_key}`;
         const response = await fetch(apiUrl);
 
         if (!response.ok) {
@@ -133,3 +133,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+function sam ( a, b){
+   console.log(a+b);
+}
+sam()
