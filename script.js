@@ -6,14 +6,14 @@ const blog_cont = document.getElementById('blog-container');
 blog_cont.style.color = "white";
 
 const searchField = document.getElementById("search-input")
-
+const video = document.getElementById("video")
 
 const searchBtn = document.getElementById("search-btn")
 
 async function fetch_blogs() {
     try {
         // apiUrl = site url + query + api-key
-        const apiUrl = `https://newsapi.org/v2/everything?q=india&pageSize=10&apiKey=${api_key}`;
+        const apiUrl = `https://newsapi.org/v2/everything?q=india&pageSize=100&apiKey=${api_key}`;
         const response = await fetch(apiUrl);
 
         if (!response.ok) {
@@ -22,6 +22,7 @@ async function fetch_blogs() {
 
         const data = await response.json();
         console.log(data);
+        video.style.display = "none"
 
         if (data.status !== 'ok') {
             throw new Error(`API error! message: ${data.message}`);

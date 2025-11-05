@@ -1,4 +1,51 @@
+/*
+ * NEWS HUB STYLESHEET - BLUE/TEAL COSMIC THEME
+ * Author: Gemini
+ * Version: 8.0
+ * Features: Modern "Neon Glow" Cards, Full Blue/Teal Theme, Pure CSS Universe Background, Shadow Gradients, Full Responsiveness.
+*/
 
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* --- Color Variables for High UX & Consistency --- */
+:root {
+    --color-dark: rgb(18, 18, 18);          /* Main background color */
+    --color-primary: #0A60FF;               /* THEME COLOR: GEMINI BLUE */
+    --color-secondary: #00FFFF;             /* ACCENT: BRIGHT CYAN/TEAL */
+    --color-text-light: #F0F0F0;            /* Off-white for body text */
+    --color-text-dark: #121212;             /* Dark text for light areas */
+    --color-card-bg: rgba(255, 255, 255, 0.05); /* Subtle transparency for glass effect */
+
+    /* Shadow Gradient Colors */
+    --shadow-blue-main-start: rgba(10, 96, 255, 0.6); 
+    --shadow-blue-main-end: rgba(10, 96, 255, 0.1);
+    --shadow-teal-start: rgba(0, 255, 255, 0.7);      
+    --shadow-teal-end: rgba(0, 255, 255, 0.2);
+}
+
+/* --- Keyframe Animations --- */
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 var(--shadow-blue-main-start); }
+    70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(10, 96, 255, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 var(--shadow-blue-main-start); }
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes background-pan {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+@keyframes twinkle {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+
+/* --- Global and Body Styles --- */
+/* --- Global and Body Styles (UPDATED FOR STAR VISIBILITY) --- */
 body{
     display: flex;
     align-items: center;
@@ -6,329 +53,358 @@ body{
     box-sizing: border-box;
     font-family: 'Outfit', sans-serif;
     scroll-behavior: smooth;
-    
+    overflow-x: hidden;
+    position: relative;
+
+    /* ENHANCED VISIBILITY PURE CSS UNIVERSE BACKGROUND */
+    background-image: 
+        /* Layer 1: Brightest, largest stars */
+        radial-gradient(circle at 10% 20%, #FFFFFF 2px, transparent 0), /* Larger, brighter */
+        radial-gradient(circle at 80% 90%, #FFFFFF 1.5px, transparent 0),
+        
+        /* Layer 2: Medium stars - higher density/brightness */
+        radial-gradient(circle at 40% 70%, rgba(255, 255, 255, 1) 1px, transparent 0),
+        radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.8) 0.8px, transparent 0),
+
+        /* Layer 3: Star dust - very high density */
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.5) 0.6px, transparent 0),
+        radial-gradient(circle at 20% 60%, rgba(255, 255, 255, 0.4) 0.5px, transparent 0),
+        
+        /* Nebula Glow (using main theme color) */
+        radial-gradient(ellipse at 50% 50%, rgba(10, 96, 255, 0.15) 0%, transparent 70%); /* Slight increase in nebula visibility */
+
+
+    background-size: 
+        500px 500px, 400px 400px, /* Layer 1 - Slightly tighter spacing for more stars */
+        250px 250px, 200px 200px, /* Layer 2 */
+        120px 120px, 80px 80px, /* Layer 3 - Much tighter spacing for dense dust */
+        100% 100%; /* Nebula */
+
+    background-color: var(--color-dark);
+    animation: background-pan 300s linear infinite alternate, twinkle 5s infinite alternate; 
 }
 
 #page{
-  
-    
     width:99%;
-    background-color: rgb(10, 10, 10);
+    background-color: var(--color-dark);
     border-radius: 10px;
-    /* height:1000rem; */
-    /* box-shadow: 10px 50px 50px  rgb(239, 223, 3) ; */
+    /* Shadow Gradient Effect on Page Container */
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5), 
+                0 0 20px -5px var(--shadow-blue-main-end) inset, 
+                0 0 20px -5px var(--shadow-teal-end) inset;
+    border: 1px solid rgba(10, 96, 255, 0.1); 
+    position: relative;
+    z-index: 1;
 }
 
+/* --- Navigation & Header Styles --- */
 .nav {
     display: flex;
-    flex-direction: c;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between; /* Logo Left, Search Right */
     height: 15vh;
-    background-color: gold;
+    background-color: var(--color-primary); 
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
-
-    
+    flex-wrap: nowrap; 
+    padding: 0 5%;
+}
+.nav-left { 
+    display: flex;
+    align-items: center;
+    gap: 30px; 
 }
 .nav .name a{
     text-decoration: none;
-    color:black;
-    font-weight: bolder;
+    color: var(--color-text-light); 
+    font-weight: 900;
     font-size: min(7vw,40px);
-    
-    
 }
 .name{
-    border: 2px solid black;
+    border: 2px solid var(--color-text-light); 
     border-radius: 5px;
     height: min(7vh,100px);
     width:min(200px,40vw);
     display: flex;
     align-items: center;
     padding: 5px 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 .nav .options h4{
-    border-bottom: 2px solid black;
+    border-bottom: none; 
+    transition: all 0.3s ease-in-out;
+    font-family: 'Poppins', sans-serif;
+}
+.nav .options h4:hover {
+    border-bottom: 3px solid var(--color-secondary); 
+    padding-bottom: 5px;
+    transform: translateY(-2px);
 }
 .nav .options h4 a{
     text-decoration: none;
-    color: black;
+    color: var(--color-text-light); 
+    font-size: min(20px,5vw);
 }
+
+/* --- Search Bar Styles --- */
 .search{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 10px;
 }
 .search input{
     height:2vh;
-    width:15vw;
-    padding:2vh 2vw;
+    width:20vw;
+    padding:2vh 1vw;
     border-radius: 5px;
-    /* border: none; */
+    border: 1px solid var(--color-text-dark);
+    background-color: var(--color-text-light);
+    color: var(--color-text-dark);
+    transition: box-shadow 0.3s ease-in-out;
+}
+.search input:focus {
+    outline: none;
+    box-shadow: 0 0 10px var(--color-secondary); 
 }
 .search button{
     height:7vh;
     width:8vw;
     padding:1vh 1.5vw;
     border:none;
-    background-color:black ;
-    color:gold;
+    background-color: black ;
+    color: var(--color-primary); 
     border-radius: 5px;
-    font-size: 2vw;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 1.2vw;
+    font-weight: bolder;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    /* Shadow Gradient Effect on Button (Blue/Teal) */
+    box-shadow: 
+        0 0 10px 2px var(--shadow-blue-main-start), 
+        0 0 20px 5px var(--shadow-teal-end);
 }
 .search button a{
     text-decoration: none;
-    color:white;
+    color: var(--color-primary); 
     font-size: 1.2vw;
 }
 .search button:hover{
-    background-color: gold;
-    border: 2px  solid black;
-    color:black;
+    background-color: var(--color-secondary); 
+    border: 2px solid var(--color-dark);
+    color: var(--color-dark);
     font-weight: bolder;
+    transform: scale(1.05);
+    animation: pulse 1.5s infinite;
+    box-shadow: none;
+    a{
+    color: var(--color-dark); 
+    }
 }
-.search button a:hover{
-    color:black;
-}
+
+/* --- Main Content and Modern Card Styles --- */
 main{
     margin-top: 3%;
     margin-left:5%;
-    width:100%;
- 
-    position: relative;
+    width:90%;
     display: flex;
     flex-direction: row;
     box-sizing: border-box;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: center;
     flex-wrap: wrap;
+    padding-bottom: 20px;
 }
 .boxes{
-    /* position: absolute; */
-    border:2px gold solid;
-    width:215px;
-    /* height:40vh; */
-    color:white;
+    animation: fadeIn 0.6s ease-out forwards;
+    opacity: 0; 
+    
+    /* MODERN CARD STYLES */
+    width:280px; 
+    background-color: var(--color-card-bg); 
+    border: 1px solid rgba(0, 255, 255, 0.1); 
+    backdrop-filter: blur(5px); 
+    
+    color:var(--color-text-light);
     display:flex;
     margin:20px;
-    padding:5px 10px;
+    padding:10px; 
     flex-direction: column;
-    border-radius: 10px;
+    border-radius: 12px; 
     cursor: pointer;
-    /* background-color: black; */
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4); 
 }
+
 .boxes img{
     width:100%;
-    margin-top: 2%;
+    margin:0 0 10px 0; 
     border-radius: 10px;
-    height:8rem;
+    height:10rem; 
+    object-fit: cover;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
 }
-.boxes p {
-    height:100%;
-    font-size: 14px;
-    font-weight: 500;
-    word-spacing: 0cqmin;
-    
 
+.boxes h3 {
+    color: var(--color-secondary); 
+    font-size: 19px;
+    margin: 5px 0 10px 0;
+    padding: 0 10px; 
+    font-weight: 700;
+}
+
+.boxes p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+    height: auto;
+    overflow: hidden;
+    padding: 0 10px 10px 10px; 
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
 }
 
 .boxes:hover{
-    /* box-shadow: -2px 1px 10px whitesmoke; */
-    border: none;
-    transform: scale(1.1);
-    background-color: white;
-    color:black
+    transform: translateY(-8px) scale(1.05); 
+    /* NEON GLOW EFFECT */
+    box-shadow: 
+        0 0 20px 5px var(--shadow-teal-start), 
+        0 0 5px var(--shadow-blue-main-start), 
+        0 0 0 3px var(--color-secondary); 
+    background-color: var(--color-card-bg); 
+    color: var(--color-text-light);
+}
+.boxes:hover h3 {
+    color: var(--color-secondary); 
+}
+.boxes:hover p {
+    color: var(--color-text-light);
 }
 
-.head h1{
-    font-size: 45px;
-}
-.head h3{ 
-     font-size: 30px;
-    text-shadow:5px 2px 10px blue;
-    
-}
-header{
+/* --- Footer/Content Box Styles --- */
+.content {
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-    
-}
-
-/* Style the video: 100% width and height to cover the entire window */
-#myVideo {
-    /* position: fixed; */
-    /* right: 0; */
-    /* bottom: 0; */
-    /* min-width: 100%; */
-    width:100%;
-    /* height:130vh; */
-   
-    /* min-height: 100%; */
-  }
- 
-  /* Add some content at the bottom of the video/page */
-  .content {
-    /* position: fixed; */
-    /* bottom: 0; */
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    margin-top:15px;
-    
-
-    
-    background: gold;
-    color: #f1f1f1;
-    width: 97%;
-    height: max(50px,15vh);
-    border-radius: 20px;
-    color:black;
-
-
-
-  }
-
-  .nav-left{
-    display: flex;
     flex-direction: row;
-    gap:10vw;
     justify-content: space-between;
-    align-items: center;
-  }
-  .content h1 ,.content p{
-    margin-left:5%;
-    font-size: 2vw;
-    
-  }
-  .content h1{
+    padding: 0 3%;
+    margin-top: 15px;
+    background: var(--color-primary); 
+    color: var(--color-text-light); 
+    width: 93%;
+    height: max(50px, 15vh);
+    border-radius: 10px;
+    margin-left: 3%;
+    margin-bottom: 15px;
+}
+.content h1 ,.content p{
+    margin-left:0;
     font-size: min(3.5vw,30px);
-  }
-  
- 
-  .options h4 a{
-    font-size: min(20px,5vw);
-    
-  }
+    font-weight: 700;
+}
+.content p {
+    font-size: min(2vw, 16px);
+    font-weight: 400;
+    margin-right: 5%;
+}
 
-  @media screen and (max-width: 600px) {
-  
-    .nav-left{
-        background-color: black;
-        width: 100%;
-        color:gold;
-        top:0;
-        margin-top: -6vh;
-        height: 20vh;
-        display: flex;
-        flex-direction: row;
-        gap:5vw;
-        justify-content: space-around;
-        align-items: center;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-    }
-    .name{
-        color:gold;
 
-    }
-    .search {
-        flex-direction: column;
-    }
-    
-    .search input {
-        width: 100%;
-    }
-    
-    .search button {
-        width: 100%;
+/* ------------------------------------------- */
+/* --- RESPONSIVE STYLES (Mobile/Tablet) --- */
+/* ------------------------------------------- */
 
-    }
-    .search button a{
-        font-size: 11px;
-    }
+/* Header alignment on medium screens */
+@media screen and (max-width: 650px) {
     .nav {
-        display: flex;
         flex-direction: column;
-        align-items: center;
-        /* justify-content:; */
-        height: 50vh;
-        background-color: gold;
-        border-top-right-radius: 10px;
-        border-top-left-radius: 10px;
-    
-        
+        height: auto;
+        padding: 20px 10px; 
+        justify-content: flex-start;
     }
-    .nav .name a{
-        text-decoration: none;
-        color:gold;
-        font-weight: bolder;
-        font-size: 7vw;
-        
-        
+    .nav-left{
+        width: 100%;
+        gap: 15px;
+        justify-content: center; 
+        padding-bottom: 10px;
     }
-    .name{
-        border: 2px solid gold;
-        border-radius: 5px;
-        height: 9vh;
-        width:35vw;
-        display: flex;
-        align-items: center;
-        padding: 5px 10px;
-    }
-    .nav .options h4{
-        border-bottom: 2px solid gold;
+    .nav .options {
+        display: block; 
     }
     .nav .options h4 a{
-        text-decoration: none;
-        color:gold;
-    }    
-
-    .content h1{
-        font-size: 12px;
+        color: var(--color-text-light); 
+        font-size: 4vw;
+        border-bottom: 2px solid var(--color-text-light);
     }
-    .content{
-        border-radius: 5px;
+    .nav .options h4:hover {
+        border-bottom: 3px solid var(--color-secondary);
+    }
+    .name{
+        border: 2px solid var(--color-text-light);
+        background-color: var(--color-primary);
+        color: var(--color-text-light);
+        height: auto;
+        width: auto;
+        padding: 5px 15px;
+    }
+    .nav .name a{
+        color: var(--color-text-light);
+        font-size: 7vw;
+    }
+    .search {
+        flex-direction: row; 
+        width: 90%;
+        gap: 5px;
+        margin-top: 10px;
+        padding: 0 5%;
+    }
+    .search input {
+        width: 70%;
+        padding: 10px;
+        height: auto;
+    }
+    .search button {
+        width: 30%;
+        height: auto;
+        padding: 10px 5px;
+        font-size: 3vw;
+    }
+    .search button a{
+        font-size: 3vw;
     }
     main{
-        margin:0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-left: 0;
     }
     .boxes {
-        width:180px;
-        
-
+        width: 85vw;
+        margin: 10px 0;
+        padding: 15px;
     }
-    
-}
-
-@media screen and (min-width:600) {
-    .boxes{
-        width:200px;
+    .boxes img {
+        height: 12rem;
     }
-}
-@media screen and (max-width:470px) {
-    main{
-        display: flex;
+    .content {
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        
-        
+        align-items: flex-start;
+        height: auto;
+        padding: 15px;
+        width: 90%;
+        margin: 15px auto;
     }
-    .boxes{
-        width: 220px;
-        margin-left: 7px;
+}
+
+/* Header alignment on very narrow screens */
+@media screen and (max-width: 400px) {
+    .search {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .search input, .search button {
+        width: 100%; 
+        height: 45px;
+        font-size: 16px;
     }
 }
