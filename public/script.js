@@ -25,7 +25,7 @@ function delay(ms) {
 
 async function fetch_blogs() {
     try {
-        const apiUrl = `http://localhost:106/api/news`;  // backend proxy
+        const apiUrl = `https://news-hub-application.onrender.com/api/news`;  // backend proxy
         const response = await fetch(apiUrl);
 
         if (!response.ok) {
@@ -62,7 +62,7 @@ searchBtn.addEventListener('click',async ()=>{
 
 async function fetchNewsQuery(query) {
     try {
-        const apiUrl = `http://localhost:106/api/search?q=${encodeURIComponent(query)}`;
+        const apiUrl = `https://news-hub-application.onrender.com/api/search?q=${encodeURIComponent(query)}`;
         const response = await fetch(apiUrl);
 
         if (!response.ok) {
