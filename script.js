@@ -34,7 +34,7 @@ async function fetch_blogs() {
         }
 
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         
         // Check if video element exists before trying to style it
         if (video) {
@@ -77,7 +77,7 @@ async function fetchNewsQuery(query){
         }
 
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
 
         if (data.status !== 'ok') {
             throw new Error(`API error! message: ${data.message}`);
@@ -141,7 +141,7 @@ function displayBlogs(articles) {
         console.log("Delay finished, fetching initial news...");
 
         const articles = await fetch_blogs();
-        console.log(articles);
+        // console.log(articles);
         displayBlogs(articles);
     } catch (err) {
         console.error("Error in fetching news:", err);
